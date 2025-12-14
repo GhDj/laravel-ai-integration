@@ -16,9 +16,17 @@
         "guzzlehttp/guzzle": "^7.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "larastan/larastan": "^2.0|^3.0",
+        "mockery/mockery": "^1.6",
         "orchestra/testbench": "^8.0|^9.0",
-        "phpunit/phpunit": "^10.0",
-        "mockery/mockery": "^1.6"
+        "phpunit/phpunit": "^10.0"
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=512M",
+        "format": "vendor/bin/php-cs-fixer fix",
+        "check-style": "vendor/bin/php-cs-fixer fix --dry-run --diff"
     },
     "autoload": {
         "psr-4": {

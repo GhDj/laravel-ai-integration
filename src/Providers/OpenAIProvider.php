@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Providers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\EmbeddingResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
@@ -15,6 +12,9 @@ use Ghdj\AIIntegration\DTOs\EmbeddingResponse;
 use Ghdj\AIIntegration\DTOs\StreamingResponse;
 use Ghdj\AIIntegration\Exceptions\APIException;
 use Ghdj\AIIntegration\Exceptions\OpenAIException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class OpenAIProvider extends AbstractProvider
 {
@@ -147,11 +147,12 @@ class OpenAIProvider extends AbstractProvider
         foreach ($messages as $message) {
             if (stripos($message['content'] ?? '', 'json') !== false) {
                 $hasJsonInstruction = true;
+
                 break;
             }
         }
 
-        if (!$hasJsonInstruction) {
+        if (! $hasJsonInstruction) {
             array_unshift($messages, [
                 'role' => 'system',
                 'content' => 'Respond with valid JSON.',
@@ -166,7 +167,7 @@ class OpenAIProvider extends AbstractProvider
         $response = $this->request('GET', 'models');
 
         return array_map(
-            fn(array $model) => $model['id'],
+            fn (array $model) => $model['id'],
             $response['data'] ?? []
         );
     }
@@ -181,7 +182,7 @@ class OpenAIProvider extends AbstractProvider
             'messages' => $messages,
         ];
 
-        if (!$this->isReasoningModel($model)) {
+        if (! $this->isReasoningModel($model)) {
             $payload['max_tokens'] = $maxTokens;
         } else {
             if (isset($options['max_completion_tokens'])) {
@@ -234,7 +235,7 @@ class OpenAIProvider extends AbstractProvider
 
     protected function formatToolChoice(string|array $choice): string|array
     {
-        if (is_string($choice) && !in_array($choice, ['auto', 'none', 'required'])) {
+        if (is_string($choice) && ! in_array($choice, ['auto', 'none', 'required'])) {
             return [
                 'type' => 'function',
                 'function' => ['name' => $choice],
@@ -296,7 +297,7 @@ class OpenAIProvider extends AbstractProvider
     protected function parseEmbeddingResponse(array $response): EmbeddingResponseInterface
     {
         $embeddings = array_map(
-            fn(array $item) => $item['embedding'] ?? [],
+            fn (array $item) => $item['embedding'] ?? [],
             $response['data'] ?? []
         );
 

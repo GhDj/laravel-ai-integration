@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Tests\Unit;
 
-use Illuminate\Support\Facades\Cache;
 use Ghdj\AIIntegration\Exceptions\RateLimitExceededException;
 use Ghdj\AIIntegration\Services\RateLimiter;
 use Ghdj\AIIntegration\Tests\TestCase;
+use Illuminate\Support\Facades\Cache;
 
 class RateLimiterTest extends TestCase
 {

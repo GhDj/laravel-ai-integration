@@ -53,6 +53,7 @@ class PromptManager
 
         if ($template !== null) {
             $this->templates[$name] = $template;
+
             return clone $template;
         }
 

@@ -18,7 +18,7 @@ class CostTracker
 
     public function track(string $provider, AIResponseInterface $response): void
     {
-        if (!$this->isEnabled()) {
+        if (! $this->isEnabled()) {
             return;
         }
 
@@ -38,7 +38,7 @@ class CostTracker
 
     public function trackEmbedding(string $provider, EmbeddingResponseInterface $response): void
     {
-        if (!$this->isEnabled()) {
+        if (! $this->isEnabled()) {
             return;
         }
 
@@ -109,7 +109,7 @@ class CostTracker
 
     protected function recordUsage(string $provider, string $model, array $data): void
     {
-        if (!isset($this->usage[$provider])) {
+        if (! isset($this->usage[$provider])) {
             $this->usage[$provider] = [];
         }
 

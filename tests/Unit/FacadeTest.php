@@ -65,7 +65,7 @@ class FacadeTest extends TestCase
         $customProvider = $this->createMock(AIProviderInterface::class);
         $customProvider->method('getName')->willReturn('custom');
 
-        AI::extend('custom', fn() => $customProvider);
+        AI::extend('custom', fn () => $customProvider);
 
         $this->app['config']->set('ai.providers.custom', ['api_key' => 'test']);
 

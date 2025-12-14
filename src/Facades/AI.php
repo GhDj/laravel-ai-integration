@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Facades;
 
-use Illuminate\Support\Facades\Facade;
 use Ghdj\AIIntegration\Contracts\AIManagerInterface;
+use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static \Ghdj\AIIntegration\Contracts\AIProviderInterface provider(?string $name = null)

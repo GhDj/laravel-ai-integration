@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ghdj\AIIntegration\Providers;
 
 use Generator;
-use Psr\Http\Message\StreamInterface;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
 use Ghdj\AIIntegration\DTOs\AIResponse;
+use Psr\Http\Message\StreamInterface;
 
 class ClaudeStreamingResponse implements StreamingResponseInterface
 {
@@ -27,7 +27,7 @@ class ClaudeStreamingResponse implements StreamingResponseInterface
     {
         $buffer = '';
 
-        while (!$this->stream->eof()) {
+        while (! $this->stream->eof()) {
             $chunk = $this->stream->read(1024);
             $buffer .= $chunk;
 
@@ -90,7 +90,7 @@ class ClaudeStreamingResponse implements StreamingResponseInterface
         }
 
         if (($delta['type'] ?? '') === 'input_json_delta') {
-            if (!empty($this->toolCalls)) {
+            if (! empty($this->toolCalls)) {
                 $lastIndex = count($this->toolCalls) - 1;
                 $this->toolCalls[$lastIndex]['function']['arguments'] .= $delta['partial_json'] ?? '';
             }

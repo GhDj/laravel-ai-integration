@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Services;
 
-use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Ghdj\AIIntegration\Exceptions\RateLimitExceededException;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
 class RateLimiter
 {
@@ -17,7 +17,7 @@ class RateLimiter
 
     public function check(string $provider): void
     {
-        if (!$this->isEnabled()) {
+        if (! $this->isEnabled()) {
             return;
         }
 

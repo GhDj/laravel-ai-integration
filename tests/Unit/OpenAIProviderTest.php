@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Tests\Unit;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\EmbeddingResponseInterface;
 use Ghdj\AIIntegration\Exceptions\OpenAIException;
 use Ghdj\AIIntegration\Providers\OpenAIProvider;
 use Ghdj\AIIntegration\Tests\TestCase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 
 class OpenAIProviderTest extends TestCase
 {
@@ -300,6 +300,7 @@ class OpenAIProviderTest extends TestCase
             $provider->chat([['role' => 'user', 'content' => 'Hello']]);
         } catch (OpenAIException $e) {
             $this->assertTrue($e->isRateLimitError());
+
             return;
         }
 

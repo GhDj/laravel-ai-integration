@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Providers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Exception\ServerException;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\EmbeddingResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
@@ -15,6 +11,10 @@ use Ghdj\AIIntegration\DTOs\AIResponse;
 use Ghdj\AIIntegration\Exceptions\AIException;
 use Ghdj\AIIntegration\Exceptions\APIException;
 use Ghdj\AIIntegration\Exceptions\ClaudeException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Exception\ServerException;
 
 class ClaudeProvider extends AbstractProvider
 {
@@ -148,7 +148,7 @@ class ClaudeProvider extends AbstractProvider
             }
         }
 
-        if (isset($options['stop']) && !isset($options['stop_sequences'])) {
+        if (isset($options['stop']) && ! isset($options['stop_sequences'])) {
             $payload['stop_sequences'] = (array) $options['stop'];
         }
 
@@ -184,11 +184,13 @@ class ClaudeProvider extends AbstractProvider
 
             if ($role === 'assistant' && isset($message['tool_calls'])) {
                 $formatted[] = $this->formatAssistantToolCallMessage($message);
+
                 continue;
             }
 
             if ($role === 'tool') {
                 $formatted[] = $this->formatToolResultMessage($message);
+
                 continue;
             }
 
@@ -257,7 +259,7 @@ class ClaudeProvider extends AbstractProvider
     {
         $content = [];
 
-        if (!empty($message['content'])) {
+        if (! empty($message['content'])) {
             $content[] = ['type' => 'text', 'text' => $message['content']];
         }
 

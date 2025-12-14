@@ -99,7 +99,7 @@ class ProviderIntegrationTest extends TestCase
         $customProvider->method('getModels')->willReturn(['custom-model-1']);
         $customProvider->method('supportsStreaming')->willReturn(false);
 
-        AI::extend('my-custom', fn() => $customProvider);
+        AI::extend('my-custom', fn () => $customProvider);
         $this->app['config']->set('ai.providers.my-custom', ['api_key' => 'test']);
 
         $resolved = AI::provider('my-custom');

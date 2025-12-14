@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Providers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\EmbeddingResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
@@ -14,6 +11,9 @@ use Ghdj\AIIntegration\DTOs\AIResponse;
 use Ghdj\AIIntegration\DTOs\EmbeddingResponse;
 use Ghdj\AIIntegration\Exceptions\APIException;
 use Ghdj\AIIntegration\Exceptions\GeminiException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 
 class GeminiProvider extends AbstractProvider
 {
@@ -163,7 +163,7 @@ class GeminiProvider extends AbstractProvider
         ]);
 
         $embeddings = array_map(
-            fn($embedding) => $embedding['values'] ?? [],
+            fn ($embedding) => $embedding['values'] ?? [],
             $response['embeddings'] ?? []
         );
 
@@ -233,7 +233,7 @@ class GeminiProvider extends AbstractProvider
             $generationConfig['responseMimeType'] = $options['response_mime_type'];
         }
 
-        if (!empty($generationConfig)) {
+        if (! empty($generationConfig)) {
             $payload['generationConfig'] = $generationConfig;
         }
 
@@ -301,6 +301,7 @@ class GeminiProvider extends AbstractProvider
                         ],
                     ],
                 ];
+
                 continue;
             }
 
@@ -315,6 +316,7 @@ class GeminiProvider extends AbstractProvider
                     ];
                 }
                 $formatted[] = ['role' => 'model', 'parts' => $parts];
+
                 continue;
             }
 

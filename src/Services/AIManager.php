@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Services;
 
-use InvalidArgumentException;
 use Ghdj\AIIntegration\Contracts\AIManagerInterface;
 use Ghdj\AIIntegration\Contracts\AIProviderInterface;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
@@ -15,6 +14,7 @@ use Ghdj\AIIntegration\Prompts\PromptManager;
 use Ghdj\AIIntegration\Providers\ClaudeProvider;
 use Ghdj\AIIntegration\Providers\GeminiProvider;
 use Ghdj\AIIntegration\Providers\OpenAIProvider;
+use InvalidArgumentException;
 
 class AIManager implements AIManagerInterface
 {

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Tests\Unit;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\EmbeddingResponseInterface;
 use Ghdj\AIIntegration\Exceptions\GeminiException;
 use Ghdj\AIIntegration\Providers\GeminiProvider;
 use Ghdj\AIIntegration\Tests\TestCase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 
 class GeminiProviderTest extends TestCase
 {
@@ -280,6 +280,7 @@ class GeminiProviderTest extends TestCase
             $provider->chat([['role' => 'user', 'content' => 'Hello']]);
         } catch (GeminiException $e) {
             $this->assertTrue($e->isRateLimitError());
+
             return;
         }
 

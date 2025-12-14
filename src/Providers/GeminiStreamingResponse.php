@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Ghdj\AIIntegration\Providers;
 
 use Generator;
-use Psr\Http\Message\StreamInterface;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
 use Ghdj\AIIntegration\DTOs\AIResponse;
+use Psr\Http\Message\StreamInterface;
 
 class GeminiStreamingResponse implements StreamingResponseInterface
 {
@@ -27,7 +27,7 @@ class GeminiStreamingResponse implements StreamingResponseInterface
     {
         $buffer = '';
 
-        while (!$this->stream->eof()) {
+        while (! $this->stream->eof()) {
             $chunk = $this->stream->read(1024);
             $buffer .= $chunk;
 

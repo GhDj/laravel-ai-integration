@@ -10,6 +10,8 @@ interface PromptTemplateInterface
 
     public function getTemplate(): string;
 
+    public function getSystemTemplate(): ?string;
+
     public function getVariables(): array;
 
     public function getRequiredVariables(): array;

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Providers;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 use Ghdj\AIIntegration\Contracts\AIProviderInterface;
 use Ghdj\AIIntegration\Exceptions\APIException;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 
 abstract class AbstractProvider implements AIProviderInterface
 {

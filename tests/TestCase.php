@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Ghdj\AIIntegration\AIIntegrationServiceProvider;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {

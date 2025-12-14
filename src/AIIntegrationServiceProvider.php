@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration;
 
-use Illuminate\Support\ServiceProvider;
 use Ghdj\AIIntegration\Contracts\AIManagerInterface;
 use Ghdj\AIIntegration\Prompts\PromptManager;
 use Ghdj\AIIntegration\Services\AIManager;
 use Ghdj\AIIntegration\Services\CostTracker;
 use Ghdj\AIIntegration\Services\RateLimiter;
+use Illuminate\Support\ServiceProvider;
 
 class AIIntegrationServiceProvider extends ServiceProvider
 {

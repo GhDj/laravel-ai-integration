@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Ghdj\AIIntegration\DTOs;
 
 use Generator;
-use Psr\Http\Message\StreamInterface;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Contracts\StreamingResponseInterface;
+use Psr\Http\Message\StreamInterface;
 
 class StreamingResponse implements StreamingResponseInterface
 {
@@ -25,7 +25,7 @@ class StreamingResponse implements StreamingResponseInterface
     {
         $buffer = '';
 
-        while (!$this->stream->eof()) {
+        while (! $this->stream->eof()) {
             $chunk = $this->stream->read(1024);
             $buffer .= $chunk;
 

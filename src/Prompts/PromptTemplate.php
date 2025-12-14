@@ -116,7 +116,7 @@ class PromptTemplate implements PromptTemplateInterface
         $required = $this->getRequiredVariables();
 
         foreach ($required as $var) {
-            if (!array_key_exists($var, $merged)) {
+            if (! array_key_exists($var, $merged)) {
                 return false;
             }
         }
@@ -131,7 +131,7 @@ class PromptTemplate implements PromptTemplateInterface
 
         return array_values(array_filter(
             $required,
-            fn(string $var) => !array_key_exists($var, $merged)
+            fn (string $var) => ! array_key_exists($var, $merged)
         ));
     }
 
@@ -198,7 +198,7 @@ class PromptTemplate implements PromptTemplateInterface
     {
         $missing = $this->getMissingVariables($variables);
 
-        if (!empty($missing)) {
+        if (! empty($missing)) {
             throw new PromptException(
                 'Missing required variables: ' . implode(', ', $missing)
             );

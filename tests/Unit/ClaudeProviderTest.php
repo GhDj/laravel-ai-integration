@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Ghdj\AIIntegration\Tests\Unit;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\MockHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Psr7\Response;
 use Ghdj\AIIntegration\Contracts\AIResponseInterface;
 use Ghdj\AIIntegration\Exceptions\AIException;
 use Ghdj\AIIntegration\Exceptions\ClaudeException;
 use Ghdj\AIIntegration\Providers\ClaudeProvider;
 use Ghdj\AIIntegration\Tests\TestCase;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 
 class ClaudeProviderTest extends TestCase
 {
@@ -236,6 +236,7 @@ class ClaudeProviderTest extends TestCase
             $provider->chat([['role' => 'user', 'content' => 'Hello']]);
         } catch (ClaudeException $e) {
             $this->assertTrue($e->isRateLimitError());
+
             return;
         }
 
@@ -257,6 +258,7 @@ class ClaudeProviderTest extends TestCase
             $provider->chat([['role' => 'user', 'content' => 'Hello']]);
         } catch (ClaudeException $e) {
             $this->assertTrue($e->isOverloadedError());
+
             return;
         }
 

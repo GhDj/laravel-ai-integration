@@ -84,7 +84,7 @@ class AIResponse implements AIResponseInterface
 
     public function hasToolCalls(): bool
     {
-        return !empty($this->toolCalls);
+        return ! empty($this->toolCalls);
     }
 
     public function isToolCall(): bool

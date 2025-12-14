@@ -67,7 +67,7 @@ class AIManagerTest extends TestCase
         $customProvider = $this->createMock(AIProviderInterface::class);
         $customProvider->method('getName')->willReturn('custom');
 
-        $manager->extend('custom', fn() => $customProvider);
+        $manager->extend('custom', fn () => $customProvider);
 
         $this->app['config']->set('ai.providers.custom', ['api_key' => 'test']);
 
@@ -138,6 +138,7 @@ class AIManagerTest extends TestCase
             $receivedConfig = $config;
             $mock = $this->createMock(AIProviderInterface::class);
             $mock->method('getName')->willReturn('test');
+
             return $mock;
         });
 
@@ -155,8 +156,8 @@ class AIManagerTest extends TestCase
 
         $mock = $this->createMock(AIProviderInterface::class);
 
-        $result = $manager->extend('test1', fn() => $mock)
-                          ->extend('test2', fn() => $mock);
+        $result = $manager->extend('test1', fn () => $mock)
+                          ->extend('test2', fn () => $mock);
 
         $this->assertSame($manager, $result);
     }
