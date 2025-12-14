@@ -1,0 +1,48 @@
+{
+    "name": "ghdj/laravel-ai-integration",
+    "description": "Laravel package for AI provider abstraction with support for OpenAI, Claude, and Gemini",
+    "keywords": ["laravel", "ai", "openai", "claude", "gemini", "llm"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "GhDj",
+            "email": "ghabri.djalel@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit": "^10.0",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ghdj\\AIIntegration\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ghdj\\AIIntegration\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ghdj\\AIIntegration\\AIIntegrationServiceProvider"
+            ],
+            "aliases": {
+                "AI": "Ghdj\\AIIntegration\\Facades\\AI"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
