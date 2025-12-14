@@ -1,5 +1,12 @@
 # Laravel AI Integration
 
+[![Tests](https://github.com/GhDj/laravel-ai-integration/actions/workflows/tests.yml/badge.svg)](https://github.com/GhDj/laravel-ai-integration/actions/workflows/tests.yml)
+[![Code Style](https://github.com/GhDj/laravel-ai-integration/actions/workflows/code-style.yml/badge.svg)](https://github.com/GhDj/laravel-ai-integration/actions/workflows/code-style.yml)
+[![Static Analysis](https://github.com/GhDj/laravel-ai-integration/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/GhDj/laravel-ai-integration/actions/workflows/static-analysis.yml)
+[![Latest Version](https://img.shields.io/packagist/v/ghdj/laravel-ai-integration.svg)](https://packagist.org/packages/ghdj/laravel-ai-integration)
+[![License](https://img.shields.io/packagist/l/ghdj/laravel-ai-integration.svg)](https://packagist.org/packages/ghdj/laravel-ai-integration)
+[![PHP Version](https://img.shields.io/packagist/php-v/ghdj/laravel-ai-integration.svg)](https://packagist.org/packages/ghdj/laravel-ai-integration)
+
 A Laravel package for seamless integration with multiple AI providers (OpenAI, Claude, Gemini) featuring rate limiting, cost tracking, and prompt templating.
 
 ## Requirements
